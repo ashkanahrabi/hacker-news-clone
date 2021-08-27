@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './news.css';
 import {dataFetch} from "../../utils/dataFetch";
 import {Link} from "react-router-dom";
+import {calculateTime} from "../../utils/calculateTime";
 
-const News = React.memo(({item}) => {
+const News = React.memo(({item, index}) => {
     const [details, setDetails] = useState(null);
 
     useEffect(() => {
@@ -22,14 +23,24 @@ const News = React.memo(({item}) => {
         <>
             <div className="news">
                 <div className="news-title">
-                    <div className="font-title-small">1. </div>
+                    {
+                        index &&
+                            <div className="font-title-small">{index}. </div>
+                    }
                     <div className="font-title-medium">{details?.title}</div>
                     <a className="font-title-small" href={details?.url}>{`(${generateUrl()})`}</a>
                 </div>
                 <div className="news-subtitle">
                     <div className="font-subtitle-small">{details?.score} points</div>
-                    <a className="font-subtitle-small" href="https://test.com">by {details?.by}</a>
-                    <a className="font-subtitle-small" href="https://test.com">8 hours ago</a>
+
+                    <Link to={`/item/${item}`} >
+                        <span className="font-subtitle-small" href="https://test.com">by {details?.by}</span>
+                    </Link>
+
+                    <Link to={`/item/${item}`} >
+                        <span className="font-subtitle-small" href="https://test.com">{calculateTime(details?.time)}</span>
+                    </Link>
+
                     <Link to={`/item/${item}`} >
                         <span className="font-subtitle-small">{details?.descendants} comments</span>
                     </Link>
