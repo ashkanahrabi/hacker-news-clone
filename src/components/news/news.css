@@ -1,0 +1,20 @@
+.news {
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 20px;
+    padding: 10px 0;
+}
+
+.news-title,
+.news-subtitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.news-title *,
+.news-subtitle * {
+    margin-right: 8px;
+}
