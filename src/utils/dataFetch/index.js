@@ -13,15 +13,14 @@ export const dataFetch = (url) => {
         get(ref(getDatabase(), `v0${url}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    console.log(snapshot.val());
                     resolve(snapshot.val());
                 } else {
-                    console.log("No data available");
+                    alert("No data available");
                     reject();
                 }
             })
             .catch((error) => {
-                console.error(error);
+                alert(error);
                 reject();
             });
     })
