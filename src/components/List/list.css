@@ -1,0 +1,17 @@
+.list {
+    width: 100%;
+    padding: 10px 0 0;
+    margin: 10px 20px 0;
+}
+
+.list-header {
+    display: flex;
+    color: #90a4ae;
+    margin-bottom: 5px;
+}
+.list-header :first-child {
+    margin-right: 10px;
+}
+.list-item {
+    border-bottom: 1px solid #eceff1;
+}
