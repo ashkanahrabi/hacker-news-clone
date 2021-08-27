@@ -11,6 +11,7 @@ const Main = () => {
     const [newsList, setNewsList] = useState(null);
 
     useEffect(() => {
+        //TODO: Add loading on api calls
         dataFetch('/topstories')
             .then((result) => {
                 setNewsList(result.splice((pageNumber - 1) * 30 ,30));
