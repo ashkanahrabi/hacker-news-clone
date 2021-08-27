@@ -30,3 +30,6 @@ a:hover {
 .font-subtitle-small {
   font-size: 10px;
 }
+.main-button-wrapper {
+  margin: 20px;
+}
