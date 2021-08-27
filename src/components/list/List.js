@@ -1,22 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import './list.css';
 import {dataFetch} from "../../utils/dataFetch";
+import {calculateTime} from "../../utils/calculateTime";
 
 const List = React.memo(({item}) => {
     const [details, setDetails] = useState(null);
+
     useEffect(() => {
         dataFetch(`/item/${item}`)
             .then((result) => {
-                console.log(result);
                 setDetails(result);
             });
     }, []);
+
     return (
         !details?.deleted &&
         <div className="list">
             <div className="list-header">
                 <div className="font-subtitle-small">{details?.by}</div>
-                <div className="font-subtitle-small">8 hours ago</div>
+                <div className="font-subtitle-small">{calculateTime(details?.time)}</div>
             </div>
             <div className="list-item font-title-small" dangerouslySetInnerHTML={{__html: details?.text}} />
             {
