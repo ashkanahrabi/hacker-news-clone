@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './news.css';
 import {dataFetch} from "../../utils/dataFetch";
+import {Link} from "react-router-dom";
 
 const News = React.memo(({item}) => {
     const [details, setDetails] = useState(null);
@@ -29,7 +30,9 @@ const News = React.memo(({item}) => {
                     <div className="font-subtitle-small">{details?.score} points</div>
                     <a className="font-subtitle-small" href="https://test.com">by {details?.by}</a>
                     <a className="font-subtitle-small" href="https://test.com">8 hours ago</a>
-                    <a className="font-subtitle-small" href="https://test.com">{details?.descendants} comments</a>
+                    <Link to={`/item/${item}`} >
+                        <span className="font-subtitle-small">{details?.descendants} comments</span>
+                    </Link>
                 </div>
             </div>
         </>
